@@ -4,6 +4,7 @@ import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import Link  from "next/link";
 import { useStateValue } from "../StateProvider";
+import Image from "next/image";
 
 function Header() {
   // const [{ basket, user }, dispatch] = useStateValue();
@@ -11,7 +12,13 @@ function Header() {
   return (
     <div className={styles.header}>
       <Link href={"/"}>
-        <img className={styles.header__logo} src="img/abacus223.png" />
+        <Image 
+          alt="logo"
+          width={500}
+          height={500} 
+          className={styles.header__logo} 
+          src={require("../../assest/amazon.png")} 
+        />
       </Link>
       <div className={styles.header__search}>
         <input className={styles.header__searchInput} type="text" />
