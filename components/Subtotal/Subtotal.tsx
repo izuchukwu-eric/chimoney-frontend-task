@@ -4,6 +4,7 @@ import CurrencyFormat from "react-currency-format";
 import { useSelector, useDispatch } from "react-redux";
 import { getCartTotal } from "../../redux/features/cartSlice";
 import { AppDispatch } from "../../redux/store";
+import Link from "next/link";
 
 
 
@@ -16,16 +17,14 @@ function Subtotal() {
   useEffect(() => {
     dispatch(getCartTotal(items));
   }, [items, dispatch]);
-  // const handleClick = () => {
-  //   history("/MakePayment");
-  // };
+  
   return (
     <div className={styles.subtotal}>
       <CurrencyFormat
         renderText={(value: any) => (
           <>
             <p>
-              Subtotal {items?.length} items:
+              Subtotal ({items?.length} items):
               <strong>{value}</strong>
             </p>
             <small className={styles.subtotal__gift}>
@@ -39,7 +38,9 @@ function Subtotal() {
         ThousandSeperator={true}
         prefix={"$"}
       />
-      <button>Proceed to Checkout</button>
+      <Link href={"/payment"}>
+        <button className={styles.subtotal_button}>Proceed to Checkout</button>
+      </Link>
     </div>
   );
 }
