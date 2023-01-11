@@ -30,3 +30,27 @@
   font-size: 17px;
   font-weight: 800;
 }
+
+.buttonContainer {
+  display: flex;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.increaseButton {
+  background: gray;
+  color: #111;
+  height: 20px;
+  width: 40px;
+  border: none;
+  border-radius: 5px;
+}
+
+.decreaseButton {
+  background: gray;
+  color: #111;
+  height: 20px;
+  width: 40px;
+  border: none;
+  border-radius: 5px;
+}

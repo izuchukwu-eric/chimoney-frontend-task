@@ -3,19 +3,22 @@ import styles from "./Header.module.css";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import Link  from "next/link";
-import { useStateValue } from "../StateProvider";
 import Image from "next/image";
+import { useSelector } from "react-redux";
+
 
 function Header() {
-  // const [{ basket, user }, dispatch] = useStateValue();
+  const { items } = useSelector(
+    (state: any) => state.cart
+  );
 
   return (
     <div className={styles.header}>
       <Link href={"/"}>
         <Image 
           alt="logo"
-          width={500}
-          height={500} 
+          width={50}
+          height={50}
           className={styles.header__logo} 
           src={require("../../assest/amazon.png")} 
         />
@@ -37,7 +40,7 @@ function Header() {
           <div className={styles.header__optionBasket}>
             <ShoppingBasketIcon />
             <span className={styles.header__optionLineTwo}>
-              {/* {basket?.length} */}
+              {items?.length}
             </span>
           </div>
         </Link>

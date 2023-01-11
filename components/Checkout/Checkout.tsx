@@ -1,12 +1,15 @@
 import React from "react";
 import styles from "./Checkout.module.css";
 import CheckoutProduct from "../CheckoutProduct/CheckoutProduct";
-import { useStateValue } from "../StateProvider";
 import Subtotal from "../Subtotal/Subtotal";
 import Footer from "../Footer/Footer";
+import { useSelector } from "react-redux";
+
 
 function Checkout() {
-  // const [{ basket, user }, dispatch] = useStateValue();
+  const { items } = useSelector(
+    (state: any) => state.cart
+  );
 
   return (
     <div>
@@ -21,15 +24,16 @@ function Checkout() {
             <h3>Hello, Guest</h3>
             <h2 className={styles.checkout__title}>Your Shopping Basket</h2>
 
-            {/* {basket.map((item: any) => (
+            {items.map((item: any) => (
               <CheckoutProduct
                 id={item.id}
                 image={item.image}
                 price={item.price}
                 rating={item.rating}
-                title={item.title}
+                title={item.name}
+                amount={item.amount}
               />
-            ))} */}
+            ))}
           </div>
         </div>
         <div className={styles.checkout__right}>

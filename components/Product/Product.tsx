@@ -1,6 +1,10 @@
 import React from "react";
 import styles from "./Product.module.css";
-import { useStateValue } from "../StateProvider";
+import { setCart, increase } from "../../redux/features/cartSlice";
+import { AppDispatch } from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+
 
 interface Props {
   id: any,
@@ -11,23 +15,29 @@ interface Props {
 }
 
 function Product({ id, title, image, price, rating }: Props) {
-  // const [{ basket }, dispatch] = useStateValue();
-
-  // console.log("This is the basket >>>", basket);
-
-  // const addToBasket = () => {
-  //   // dispatch an item into the data layer
-  //   dispatch({
-  //     type: "ADD_TO_BASKET",
-  //     item: {
-  //       id: id,
-  //       title: title,
-  //       image: image,
-  //       price: price,
-  //       rating: rating,
-  //     },
-  //   });
-  // };
+  const dispatch = useDispatch<AppDispatch>();
+  const { items, totalCount, totalAmount } = useSelector(
+    (state: any) => state.cart
+  );
+ 
+  const addToCart = () => {
+    if (items.map((item: any) => item.id).includes(id)) {
+      dispatch(increase(id));
+      toast.error("Product already in cart");
+      return;
+    }
+    dispatch(
+      setCart({
+        name: title,
+        price: price,
+        id: id,
+        image: image,
+        rating: rating,
+        amount: 1,
+      })
+    );
+    toast.success("Product added to cart");
+  };
 
   return (
     <div className={styles.product}>
@@ -48,7 +58,7 @@ function Product({ id, title, image, price, rating }: Props) {
       </div>
       <img src={image} alt="" />
 
-      <button>Add to basket</button>
+      <button onClick={addToCart}>Add to basket</button>
     </div>
   );
 }

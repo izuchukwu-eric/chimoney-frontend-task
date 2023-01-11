@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./CheckoutProduct.module.css";
-import { useStateValue } from "../StateProvider";
+import { AppDispatch } from "../../redux/store";
+import { useDispatch } from "react-redux";
+import { remove, decrease, increase } from "../../redux/features/cartSlice";
+import { toast } from "react-toastify";
+import PlusIcon from "@heroicons/react/outline/PlusIcon";
+import MinusIcon from "@heroicons/react/outline/MinusIcon";
+
 
 interface Props {
   id: any
@@ -8,17 +14,17 @@ interface Props {
   title: any
   price: any
   rating: any
+  amount: any
 }
 
-function CheckoutProduct({ id, image, title, price, rating }: Props) {
-  const [{ basket }, dispatch] = useStateValue();
+function CheckoutProduct({ id, image, title, price, rating, amount }: Props) {
+  const dispatch = useDispatch<AppDispatch>();
 
   const removeFromBasket = () => {
-    //   remove the item from the basket
-    dispatch({
-      type: "REMOVE_FROM_BASKET",
-      id: id,
-    });
+    dispatch(
+      remove(id)
+    );
+    toast.success("Product has been removed from cart");
   };
 
   return (
@@ -38,6 +44,29 @@ function CheckoutProduct({ id, image, title, price, rating }: Props) {
             .map((_, i) => (
               <p>🌟</p>
             ))}
+        </div>
+        <div className={styles.buttonContainer}>
+          <button
+            type="button"
+            className={styles.decreaseButton}
+            onClick={() => dispatch(decrease(id))}
+          >
+            <MinusIcon
+              style={{ height: "20px", width: "20px", padding: 2 }}
+              aria-hidden="true"
+            />
+          </button>
+          <span style={{ paddingLeft: 5, paddingRight: 5 }}>{amount}</span>
+          <button
+            type="button"
+            className={styles.increaseButton}
+            onClick={() => dispatch(increase(id))}
+          >
+            <PlusIcon
+              style={{ height: "20px", width: "20px", padding: 2 }}
+              aria-hidden="true"
+            />
+          </button>
         </div>
         <button onClick={removeFromBasket}>Remove from basket</button>
       </div>
