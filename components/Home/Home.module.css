@@ -6,11 +6,18 @@
   max-width: 1500px;
 }
 
-.home__row {
+.loader {
   display: flex;
+  justify-content: center;
+}
+
+.home__row {
+  display: grid;
   z-index: 1;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin-right: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1rem;
+  grid-auto-rows: auto;
 }
 
 .home__image {
@@ -23,6 +30,7 @@
 @media only screen and (max-width: 600px) {
   .home__row {
     flex-direction: column;
+    grid-template-columns: repeat(1, 1fr);
     margin: 0 auto;
   }
 
