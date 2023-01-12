@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is project was built using the following stacks: Next.js, TypeScript, CSS, and Redux
 
 ## Getting Started
 
