@@ -8,7 +8,13 @@ npm install
 yarn install
 ```
 
-Second, run the development server:
+Second, create an env.local file and add the api key like this
+
+```bash
+NEXT_PUBLIC_CHIMONEY_API='Add api key'
+```
+
+Lastly, run the development server:
 
 ```bash
 npm run dev
@@ -41,4 +47,4 @@ improve the loading time of the app.
 ## Deployed on Vercel
 Take a look at the live application:
 
-Live link: [Chimoney frontend task](https://nextjs.org/docs/deployment)
+Live link: [Chimoney frontend task](https://chimoney-frontend-task.vercel.app/)
