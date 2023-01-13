@@ -23,6 +23,7 @@ some additional features i implemented are:
 - Fetched live data from the chimoney api
 - Built an Amazon-like landing/product list page to display products from the chimoney api.
 - Built a Dummy checkout confirmation page.
+- Implemented a custom pagination to display the products in sequence.
 
 ## Product Approach / Decisions
 This is project was built using the following stacks: Next.js, TypeScript, CSS, and Redux.
