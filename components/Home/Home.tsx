@@ -66,6 +66,7 @@ function Home() {
                 price={29.99}
                 image={item?.img}
                 rating={5}
+                key={item?.productId}
               />
             ))}
           </div>

@@ -51,6 +51,7 @@ function Payment() {
                 rating={item.rating}
                 title={item.name}
                 amount={item.amount}
+                key={item?.id}
               />
             ))}
           </div>

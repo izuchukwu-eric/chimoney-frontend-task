@@ -42,7 +42,7 @@ function CheckoutProduct({ id, image, title, price, rating, amount }: Props) {
             //@ts-ignore
             .fill()
             .map((_, i) => (
-              <p>🌟</p>
+              <p key={i}>🌟</p>
             ))}
         </div>
         <div className={styles.buttonContainer}>

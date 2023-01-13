@@ -26,12 +26,13 @@ function Checkout() {
 
             {items.map((item: any) => (
               <CheckoutProduct
-                id={item.id}
-                image={item.image}
-                price={item.price}
-                rating={item.rating}
-                title={item.name}
-                amount={item.amount}
+                id={item?.id}
+                image={item?.image}
+                price={item?.price}
+                rating={item?.rating}
+                title={item?.name}
+                amount={item?.amount}
+                key={item?.id}
               />
             ))}
           </div>
