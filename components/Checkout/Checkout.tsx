@@ -22,19 +22,23 @@ function Checkout() {
 
           <div>
             <h3>Hello, Guest</h3>
-            <h2 className={styles.checkout__title}>Your Shopping Basket</h2>
+            <h2 className={styles.checkout__title}>{`Your Shopping Basket ${ items?.length == 0 ? "is Empty" : ":"}`}</h2>
+            {items?.length > 0 && 
+              <>
+                {items.map((item: any) => (
+                  <CheckoutProduct
+                    id={item?.id}
+                    image={item?.image}
+                    price={item?.price}
+                    rating={item?.rating}
+                    title={item?.name}
+                    amount={item?.amount}
+                    key={item?.id}
+                  />
+                ))}
+              </>
+            }
 
-            {items.map((item: any) => (
-              <CheckoutProduct
-                id={item?.id}
-                image={item?.image}
-                price={item?.price}
-                rating={item?.rating}
-                title={item?.name}
-                amount={item?.amount}
-                key={item?.id}
-              />
-            ))}
           </div>
         </div>
         <div className={styles.checkout__right}>

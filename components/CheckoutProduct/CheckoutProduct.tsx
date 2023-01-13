@@ -9,12 +9,12 @@ import MinusIcon from "@heroicons/react/outline/MinusIcon";
 
 
 interface Props {
-  id: any
-  image: any
-  title: any
-  price: any
-  rating: any
-  amount: any
+  id: string
+  image: string
+  title: string
+  price: number
+  rating: number
+  amount: number
 }
 
 function CheckoutProduct({ id, image, title, price, rating, amount }: Props) {

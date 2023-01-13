@@ -7,11 +7,11 @@ import { toast } from "react-toastify";
 
 
 interface Props {
-  id: any,
-  title: any,
-  image: any,
-  price: any,
-  rating: any
+  id: string,
+  title: string,
+  image: string,
+  price: number,
+  rating: number
 }
 
 function Product({ id, title, image, price, rating }: Props) {
